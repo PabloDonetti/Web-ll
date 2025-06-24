@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+            <h2 class="text-center">Login</h2>
+            <div th:if="${param.error}" class="alert alert-danger">
+                Email ou senha inválidos.
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success">
+                Você foi desconectado.
+            </div>
+            <div th:if="${param.success}" class="alert alert-success">
+                Cadastro realizado com sucesso! Faça o login.
+            </div>
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Email:</label>
+                    <input type="email" id="username" name="username" class="form-control" required autofocus="autofocus"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" class="form-control" required/>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                <div class="text-center mt-3">
+                    <span>Não tem uma conta? <a th:href="@{/register}">Registre-se aqui</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
